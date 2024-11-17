@@ -1,2 +1,9 @@
+# Python
 .venv
 __pycache__
+
+# Docker
+docker/postgresql/data
+
+# Environment variables
+.env
