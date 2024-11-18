@@ -6,3 +6,9 @@ uvicorn==0.32.0
 
 # 2024-01-23
 python-dotenv==1.0.1
+
+# 2024-08-31
+sqlmodel==0.0.22
+
+# 2024-10-16
+psycopg2-binary==2.9.10
