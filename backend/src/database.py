@@ -1,6 +1,6 @@
 import os
 
-from sqlmodel import Session, create_engine
+from sqlmodel import create_engine
 
 
 class DatabaseEngine:
@@ -20,8 +20,3 @@ db_engine = DatabaseEngine.from_config(
     password=os.environ['POSTGRES_PASSWORD'],
     db_name=os.environ['POSTGRES_DB'],
 )
-
-
-def get_session():
-    with Session(db_engine.engine) as session:
-        yield session

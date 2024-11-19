@@ -5,10 +5,10 @@
             "name": "Python Debugger: FastAPI",
             "type": "debugpy",
             "request": "launch",
-            "module": "fastapi",
+            "module": "uvicorn",
             "args": [
-                "dev",
-                "run_local.py"
+                "run_local:app",
+                "--reload"
             ],
             "jinja": true,
             "cwd": "${workspaceFolder}/src"

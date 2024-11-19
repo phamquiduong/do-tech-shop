@@ -8,5 +8,5 @@ class User(TimestampMixin, SQLModel, table=True):
 
     id: int | None = Field(default=None, primary_key=True)
 
-    phone_number: str = Field(max_length=11, regex=r'^0\d{9}$')
+    phone_number: str = Field(max_length=11)
     password: str = Field(max_length=255)
