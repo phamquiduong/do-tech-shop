@@ -45,14 +45,28 @@ docker-compose up -d
 <br>
 
 ## Start server
-### Change directory to src folder
+#### Step 1: Change directory to src folder
 ```bash
 cd src
 ```
 
-### Start server
+#### Step 2: Start server
 ```
-uvicorn main:app --reload
+fastapi run dev main.py
+```
+
+<br>
+
+## Alembic
+### Create new migration
+```bash
+alembic revision --autogenerate -m "Message"
+```
+> Since Alembic does not officially support SQLModel, you need to manually add `import sqlmodel` at the beginning of each migration file.
+
+### Upgrade head
+```bash
+alembic upgrade head
 ```
 
 #### Now you can access the server documentation at http://localhost:8000/docs
