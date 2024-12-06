@@ -1,5 +1,5 @@
 # DO Tech Shop
-> Development by FastAPI
+> Development by Django Rest Framework
 
 <br>
 
@@ -44,16 +44,15 @@ docker-compose up -d
 
 <br>
 
-## Alembic
-### Create new migration
+## Migrate database
+### Change directory to src folder
 ```bash
-alembic revision --autogenerate -m "Message"
+cd src
 ```
-> **Note:** Since Alembic does not officially support SQLModel, you need to manually add `import sqlmodel` at the beginning of each migration file.
 
 ### Upgrade head
 ```bash
-alembic upgrade head
+python manage.py migrate
 ```
 
 <br>
@@ -65,8 +64,8 @@ cd src
 ```
 
 #### Step 2: Start server
-```
-fastapi run dev main.py
+```bash
+python manage.py runserver
 ```
 
-#### Now you can access the server documentation at http://localhost:8000/docs
+#### Now you can access the server documentation at http://localhost:8000/docs/swagger/

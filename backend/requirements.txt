@@ -1,0 +1,12 @@
+django
+
+# Django rest
+djangorestframework
+markdown
+django-filter
+
+# Documentation
+drf-yasg
+
+# Database
+psycopg2-binary
