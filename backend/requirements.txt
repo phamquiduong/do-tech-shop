@@ -10,3 +10,6 @@ drf-yasg
 
 # Database
 psycopg2-binary
+
+# Authentication JWT
+djangorestframework-simplejwt
