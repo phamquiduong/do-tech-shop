@@ -10,12 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from datetime import timedelta
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DOTENV_DIR = BASE_DIR / '../docker/.env'
+if not load_dotenv(DOTENV_DIR):
+    raise FileNotFoundError(f'Can not find environment variable file: {DOTENV_DIR}')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -86,12 +92,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # Get config from docker compose environment
-        # TODO: Get config from dotenv later
-        'HOST': 'localhost',
-        'PORT': 5432,
-        'USER': 'admin',
-        'PASSWORD': 'wLBn82xs5EYoNi',
-        'NAME': 'data',
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
+        'USER': os.environ['POSTGRES_USER'],
+        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+        'NAME': os.environ['POSTGRES_DB'],
     }
 }
 

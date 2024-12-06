@@ -1,3 +1,7 @@
+# Python dotenv
+python-dotenv
+
+# Django
 django
 
 # Django rest
