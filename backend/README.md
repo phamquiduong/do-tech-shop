@@ -45,27 +45,18 @@ docker-compose up -d
 <br>
 
 ## Migrate database
-### Change directory to src folder
 ```bash
-cd src
-```
-
-### Upgrade head
-```bash
-python manage.py migrate
+.\migrate.bat
 ```
 
 <br>
 
 ## Start server
-#### Step 1: Change directory to src folder
+Run bash start server
 ```bash
-cd src
+.\start_server.bat
 ```
 
-#### Step 2: Start server
-```bash
-python manage.py runserver
-```
+> **Note:** To stop server press `Ctrl-C`
 
 #### Now you can access the server documentation at http://localhost:8000/docs/swagger/
