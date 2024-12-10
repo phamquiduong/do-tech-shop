@@ -1,24 +1,29 @@
 @echo off
-:: Install dependencies from requirements.txt
-echo Installing dependencies from requirements.txt...
+
+:: Start PostgreSQL Server
+cd docker
+
+if not exist .env (
+    echo .env file does not exist. Creating from .env.example...
+    copy .env.example .env
+)
+
+docker-compose up -d
+
+cd ..
+
+
+:: Install Python requirements
 pip install -r requirements.txt
-if %errorlevel% neq 0 (
-    echo Error occurred while installing dependencies. Please check.
-    exit /b 1
-)
 
-:: Run the migration script
-echo Running migrations...
+
+:: Migrate Database
 call migrate.bat
-if %errorlevel% neq 0 (
-    echo Error occurred during migrations. Please check.
-    exit /b 1
-)
 
-:: Start the Django development server
-echo Starting the Django development server...
-python manage.py runserver
-if %errorlevel% neq 0 (
-    echo Error occurred while starting the development server. Please check.
-    exit /b 1
-)
+
+:: Start Django server
+echo --------------------------------
+set /p PORT=Enter the Django server port (default: 8000):
+if "%PORT%"=="" set PORT=8000
+
+python manage.py runserver 127.0.0.1:%PORT%
