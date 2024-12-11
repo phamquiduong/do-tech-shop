@@ -25,7 +25,7 @@ class UserManager(BaseUserManager):
         return self.create_user(phone_number=phone_number, password=password, **extra_fields)
 
 
-class Users(AbstractUser):
+class User(AbstractUser):
     phone_number = models.CharField(unique=True, max_length=15, validators=[validate_phone_number])
     is_verify_phone_number = models.BooleanField(default=False)
     is_verify_email = models.BooleanField(default=False)
